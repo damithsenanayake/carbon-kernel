@@ -71,16 +71,20 @@ public class ReadOnlyLDAPUserStoreConstants {
         Property membershipAttribute = new Property(UserStoreConfigConstants.membershipAttribute,
                 "member", "Membership Attribute#"
                 + UserStoreConfigConstants.membershipAttributeDescription, null);
-        readLDAPGroups.setChildProperties(new Property[]{groupSearchBase, groupNameListFilter,
-                groupNameAttribute, membershipAttribute});
-        ROLDAP_USERSTORE_PROPERTIES.add(readLDAPGroups);
+        Property groupNameSearchFilter = new Property(UserStoreConfigConstants.groupNameSearchFilter,
+                "(&amp;(objectClass=group)(cn=?))", "Group Search Filter#"
+                + UserStoreConfigConstants.groupNameSearchFilterDescription, null);
 
-        setProperty(UserStoreConfigConstants.groupSearchBase, "Group Search Base", "ou=system", UserStoreConfigConstants.groupSearchBaseDescription);
-        setProperty(UserStoreConfigConstants.groupNameListFilter, "Group List Filter", "(objectClass=groupOfNames)",
-                UserStoreConfigConstants.groupNameListFilterDescription);
-        setProperty(UserStoreConfigConstants.groupNameSearchFilter, "Group Search Filter", "(&amp;(objectClass=groupOfNames)(cn=?))", UserStoreConfigConstants.groupNameSearchFilterDescription);
-        setProperty(UserStoreConfigConstants.groupNameAttribute, "Group Name Attribute", "cn", UserStoreConfigConstants.groupNameAttributeDescription);
-        setProperty(UserStoreConfigConstants.membershipAttribute, "Membership Attribute", "member", UserStoreConfigConstants.membershipAttributeDescription);
+        readLDAPGroups.setChildProperties(new Property[]{groupSearchBase, groupNameListFilter,
+                groupNameAttribute, membershipAttribute, groupNameSearchFilter});
+
+        ROLDAP_USERSTORE_PROPERTIES.add(readLDAPGroups);
+        ROLDAP_USERSTORE_PROPERTIES.add(groupSearchBase);
+        ROLDAP_USERSTORE_PROPERTIES.add(groupNameListFilter);
+        ROLDAP_USERSTORE_PROPERTIES.add(groupNameAttribute);
+        ROLDAP_USERSTORE_PROPERTIES.add(membershipAttribute);
+        ROLDAP_USERSTORE_PROPERTIES.add(groupNameSearchFilter);
+
         setProperty(UserStoreConfigConstants.memberOfAttribute, "Member Of Attribute", "", UserStoreConfigConstants.memberOfAttribute);
         setProperty(MULTI_ATTRIBUTE_SEPARATOR, "Multiple Attribute Separator", ",", MULTI_ATTRIBUTE_SEPARATOR_DESCRIPTION);
 

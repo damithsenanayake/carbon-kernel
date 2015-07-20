@@ -19,6 +19,7 @@ package org.wso2.carbon.user.core.ldap;
 import org.wso2.carbon.user.api.Property;
 import org.wso2.carbon.user.core.UserStoreConfigConstants;
 
+import javax.transaction.UserTransaction;
 import java.util.ArrayList;
 
 public class ReadWriteLDAPUserStoreConstants {
@@ -26,7 +27,7 @@ public class ReadWriteLDAPUserStoreConstants {
 
     //Properties for Read Write LDAP User Store Manager
     public static final ArrayList<Property> RWLDAP_USERSTORE_PROPERTIES = new ArrayList<Property>();
-    public static final ArrayList<Property> OPTINAL_RWLDAP_USERSTORE_PROPERTIES = new ArrayList<Property>();
+    public static final ArrayList<Property> OPTIONAL_RWLDAP_USERSTORE_PROPERTIES = new ArrayList<Property>();
 
     //For multiple attribute separation
     private static final String MULTI_ATTRIBUTE_SEPARATOR = "MultiAttributeSeparator";
@@ -39,7 +40,7 @@ public class ReadWriteLDAPUserStoreConstants {
                 UserStoreConfigConstants.connectionURLDescription, false);
         setMandatoryProperty(UserStoreConfigConstants.connectionPassword, "Connection Password",
                 "", UserStoreConfigConstants.connectionPasswordDescription, true);
-        setMandatoryProperty(UserStoreConfigConstants.userSearchBase, "User Search Based",
+        setMandatoryProperty(UserStoreConfigConstants.userSearchBase, "User Search Base",
                 "ou=Users,dc=wso2,dc=org", UserStoreConfigConstants.userSearchBaseDescription, false);
         setMandatoryProperty(UserStoreConfigConstants.usernameListFilter, "User Object Class",
                 "(objectClass=person)", UserStoreConfigConstants.usernameListFilterDescription, false);
@@ -48,15 +49,12 @@ public class ReadWriteLDAPUserStoreConstants {
         setMandatoryProperty(UserStoreConfigConstants.usernameSearchFilter, "User Search Filter",
                 "(&amp;(objectClass=person)(uid=?))", UserStoreConfigConstants
                         .usernameSearchFilterDescription, false);
-        setMandatoryProperty(UserStoreConfigConstants.userEntryObjectClass,
-                "User Entry Object Class", "wso2Person", UserStoreConfigConstants
-                        .userEntryObjectClassDescription, false);
-        setMandatoryProperty(UserStoreConfigConstants.groupEntryObjectClass,
-                "Group Entry Object Class", "groupOfNames", UserStoreConfigConstants
-                        .groupEntryObjectClassDescription, false);
 
+
+        setProperty(UserStoreConfigConstants.userEntryObjectClass,"User Entry Object Class", "person", UserStoreConfigConstants.userEntryObjectClassDescription);
         setProperty(UserStoreConfigConstants.maxUserNameListLength, "Maximum User List Length", "100", UserStoreConfigConstants.maxUserNameListLengthDescription);
         setProperty(UserStoreConfigConstants.maxRoleNameListLength, "Maximum Role List Length", "100", UserStoreConfigConstants.maxRoleNameListLengthDescription);
+        setProperty(UserStoreConfigConstants.groupEntryObjectClass,"Group Entry Object Class","groupOfNames",UserStoreConfigConstants.groupEntryObjectClassDescription);
         setProperty(UserStoreConfigConstants.userRolesCacheEnabled, "Enable User Role Cache", "true", UserStoreConfigConstants.userRolesCacheEnabledDescription);
         setProperty(UserStoreConfigConstants.SCIMEnabled, "SCIM Enabled", "false", UserStoreConfigConstants.SCIMEnabledDescription);
         setProperty(UserStoreConfigConstants.DisplayNameAttribute, "Display name attribute", "uid", UserStoreConfigConstants.DisplayNameAttributeDescription);
@@ -114,7 +112,7 @@ public class ReadWriteLDAPUserStoreConstants {
     private static void setProperty(String name, String displayName, String value,
                                     String description) {
         Property property = new Property(name, value, displayName + "#" + description, null);
-        OPTINAL_RWLDAP_USERSTORE_PROPERTIES.add(property);
+        OPTIONAL_RWLDAP_USERSTORE_PROPERTIES.add(property);
 
     }
 

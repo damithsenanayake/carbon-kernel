@@ -52,6 +52,9 @@ public class ActiveDirectoryUserStoreConstants {
         setMandatoryProperty(UserStoreConfigConstants.userEntryObjectClass,
                 "User Entry Object Class", "user", UserStoreConfigConstants
                         .userEntryObjectClassDescription, false);
+        setMandatoryProperty("ReadOnly", "Read-only", "true", "Indicates whether the user store " +
+                "is in read only mode or not", false);
+
         setProperty(UserStoreConfigConstants.groupEntryObjectClass, "Group Entry Object Class", "group", UserStoreConfigConstants.groupEntryObjectClassDescription);
 
         setProperty(UserStoreConfigConstants.maxUserNameListLength, "Maximum User List Length", "100", UserStoreConfigConstants.maxUserNameListLengthDescription);
@@ -70,7 +73,7 @@ public class ActiveDirectoryUserStoreConstants {
         Property membershipAttribute = new Property(UserStoreConfigConstants.membershipAttribute, "member", "Membership Attribute#" + UserStoreConfigConstants.membershipAttributeDescription, null);
         Property groupNameSearchFilter = new Property(UserStoreConfigConstants.groupNameSearchFilter, "(&amp;(objectClass=group)(cn=?))", "Group Search Filter#" + UserStoreConfigConstants.groupNameSearchFilterDescription, null);
         readLDAPGroups.setChildProperties(new Property[]{groupSearchBase, groupNameListFilter, groupNameAttribute, membershipAttribute, groupNameSearchFilter});
-        OPTIONAL_ACTIVE_DIRECTORY_UM_PROPERTIES.add(readLDAPGroups);
+        ACTIVE_DIRECTORY_UM_PROPERTIES.add(readLDAPGroups);
 
         setProperty(UserStoreConfigConstants.BULK_IMPORT_SUPPORT, "Bulk Import Support","true","Bulk Import Supported");
         setProperty(UserStoreConfigConstants.groupSearchBase, "Group Search Base", "CN=Users,DC=WSO2,DC=Com", UserStoreConfigConstants.groupSearchBaseDescription);

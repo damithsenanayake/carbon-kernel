@@ -48,8 +48,7 @@ public class ReadOnlyLDAPUserStoreConstants {
         setMandatoryProperty(UserStoreConfigConstants.usernameSearchFilter, "User Search Filter",
                 "(&amp;(objectClass=person)(uid=?))", UserStoreConfigConstants
                         .usernameSearchFilterDescription, false);
-        setMandatoryProperty("ReadOnly", "Read-only", "true", "Indicates whether the user store " +
-                "is in read only mode or not", false);
+
 
         setProperty(UserStoreConfigConstants.maxUserNameListLength, "Maximum User List Length", "100", UserStoreConfigConstants.maxUserNameListLengthDescription);
         setProperty(UserStoreConfigConstants.maxRoleNameListLength, "Maximum Role List Length", "100", UserStoreConfigConstants.maxRoleNameListLengthDescription);
@@ -74,7 +73,7 @@ public class ReadOnlyLDAPUserStoreConstants {
                 + UserStoreConfigConstants.membershipAttributeDescription, null);
         readLDAPGroups.setChildProperties(new Property[]{groupSearchBase, groupNameListFilter,
                 groupNameAttribute, membershipAttribute});
-        OPTIONAL_ROLDAP_USERSTORE_PROPERTIES.add(readLDAPGroups);
+        ROLDAP_USERSTORE_PROPERTIES.add(readLDAPGroups);
 
         setProperty(UserStoreConfigConstants.groupSearchBase, "Group Search Base", "ou=system", UserStoreConfigConstants.groupSearchBaseDescription);
         setProperty(UserStoreConfigConstants.groupNameListFilter, "Group List Filter", "(objectClass=groupOfNames)",

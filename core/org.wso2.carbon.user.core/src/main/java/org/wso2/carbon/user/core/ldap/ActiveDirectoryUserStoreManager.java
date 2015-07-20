@@ -101,6 +101,19 @@ public class ActiveDirectoryUserStoreManager extends ReadWriteLDAPUserStoreManag
 
     /**
      *
+     * */
+
+    public boolean isReadOnly(){
+
+        try{
+            return  new Boolean(realmConfig.getUserStoreProperty(UserCoreConstants.RealmConfig.PROPERTY_READ_ONLY));
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    /**
+     *
      */
     public void doAddUser(String userName, Object credential, String[] roleList,
                           Map<String, String> claims, String profileName) throws UserStoreException {

@@ -1929,8 +1929,8 @@ public class ReadWriteLDAPUserStoreManager extends ReadOnlyLDAPUserStoreManager 
         Properties properties = new Properties();
         properties.setMandatoryProperties(ReadWriteLDAPUserStoreConstants.RWLDAP_USERSTORE_PROPERTIES.toArray
                 (new Property[ReadWriteLDAPUserStoreConstants.RWLDAP_USERSTORE_PROPERTIES.size()]));
-        properties.setOptionalProperties(ReadWriteLDAPUserStoreConstants.OPTINAL_RWLDAP_USERSTORE_PROPERTIES.toArray
-                (new Property[ReadWriteLDAPUserStoreConstants.OPTINAL_RWLDAP_USERSTORE_PROPERTIES.size()]));
+        properties.setOptionalProperties(ReadWriteLDAPUserStoreConstants.OPTIONAL_RWLDAP_USERSTORE_PROPERTIES.toArray
+                (new Property[ReadWriteLDAPUserStoreConstants.OPTIONAL_RWLDAP_USERSTORE_PROPERTIES.size()]));
         return properties;
     }
 
